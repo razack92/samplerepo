@@ -1,0 +1,28 @@
+/*LFSR-Linear Feedback Shift Register*/
+
+#include <stdio.h>
+
+//define the SEED and feedback TAPS for 4 bit LFSR
+#define SEED 0b1001
+#define TAPS 0b1011
+
+int main()
+{
+    //initialize LFSR with SEED value
+	unsigned int lfsr = SEED;  
+    
+    //generating and printing next 4 bits of the LFSR sequence
+    for(int i=0;i<4;i++)
+    {
+		printf("%b\t %d\n",lfsr,lfsr&1);    //print the LSB
+		lfsr=shiftLFSR(lfsr);       		//shift the LFSR
+    }
+    
+    return 0;    
+}
+
+//function to perform one shift operation on the LFSR
+unsigned int shiftLFSR(unsigned int lfsr)
+{
+    return (lfsr>>1)^(-(lfsr & 1) & TAPS);    
+}
