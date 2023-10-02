@@ -1,3 +1,4 @@
+//version1.1
 /*LFSR-Linear Feedback Shift Register*/
 
 #include <stdio.h>
@@ -9,15 +10,14 @@
 int main()
 {
     //initialize LFSR with SEED value
-	unsigned int lfsr = SEED;  
+    unsigned int lfsr = SEED;  
     
     //generating and printing next 4 bits of the LFSR sequence
     for(int i=0;i<4;i++)
     {
-		printf("%b\t %d\n",lfsr,lfsr&1);    //print the LSB
-		lfsr=shiftLFSR(lfsr);       		//shift the LFSR
+	printf("%b\t %d\n",lfsr,lfsr&1);    //print the LSB
+	lfsr=shiftLFSR(lfsr);       	    //shift the LFSR
     }
-    
     return 0;    
 }
 
